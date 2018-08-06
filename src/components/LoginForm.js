@@ -46,7 +46,7 @@ class LoginForm extends Component {
     return (
       <Form onSubmit={this.signUp}>
         <Title>
-          Sign up to see your tweets
+          Already have an account???
         </Title>
         <Input placeholder="email" type="email" name="email" />
         <Input placeholder="passowrd" type="password" name="password" />
