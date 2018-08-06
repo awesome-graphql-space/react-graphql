@@ -31,6 +31,7 @@ const Button = styled.button`
 const Input = styled.input`
   font-size: 1.45em;
   border: 1px solid #ddd;
+  display:block;
 `;
 
 class SignupForm extends Component {
@@ -47,8 +48,8 @@ class SignupForm extends Component {
         <Title>
           Sign up to see your tweets
         </Title>
-        <Input type="email" name="email" />
-        <Input type="password" name="password" />
+        <Input placeholder="email" type="email" name="email" />
+        <Input placeholder="passowrd" type="password" name="password" />
         <Button>Sign up</Button>
       </Form>
     );
