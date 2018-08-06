@@ -34,12 +34,12 @@ const Input = styled.input`
   display:block;
 `;
 
-class SignupForm extends Component {
+class LoginForm extends Component {
 
   signUp = (e) => {
     const email = new FormData(e.target).get('email');
     e.preventDefault();
-    console.log(`New signup from ${email}`);
+    console.log(`New LoginForm from ${email}`);
   }
 
   render() {
@@ -48,13 +48,12 @@ class SignupForm extends Component {
         <Title>
           Sign up to see your tweets
         </Title>
-        <Input placeholder="name" type="text" name="name" />
         <Input placeholder="email" type="email" name="email" />
         <Input placeholder="passowrd" type="password" name="password" />
-        <Button>Sign up</Button>
+        <Button>Log In</Button>
       </Form>
     );
   }
 }
 
-export default SignupForm
+export default LoginForm
