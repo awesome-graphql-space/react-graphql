@@ -24,7 +24,7 @@ const Title = styled.h2`
 
 const Button = styled.button`
   font-size: 18px;
-  background-color: black;
+  background-color: #009CFA;
   color: white;
   border-radius: 5px;
   padding:10px;

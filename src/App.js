@@ -4,9 +4,9 @@ import './App.css';
 import SignupForm from './components/SignupForm'
 import styled from 'styled-components';
 
-const header = styled.header`
-  background-color: #222;
-  height: 80px;
+const Header = styled.div`
+  background-color: #009CFA;
+  height: 50px;
   padding: 20px;
   color: white;
 `;
@@ -16,9 +16,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header>
-          <h1 className="App-title">Welcome to Tweets</h1>
-        </header>
+        <Header>
+          <h1 className="App-title">Twister</h1>
+        </Header>
         <SignupForm />
       </div>
     );
