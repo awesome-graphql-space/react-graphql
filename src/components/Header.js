@@ -7,6 +7,7 @@ const HeaderStyle = styled.div`
   padding: 20px;
   color: white;
   font-size: 24px;
+  text-align:center;
 `;
 
 const Header = () => <HeaderStyle>Twister</HeaderStyle>
