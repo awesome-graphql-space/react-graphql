@@ -37,6 +37,7 @@ const Input = styled.input`
   border-radius: 5px;
   &::-webkit-input-placeholder {
     font-size: 14px;
+    vertical-align:middle;
   }
 `;
 
