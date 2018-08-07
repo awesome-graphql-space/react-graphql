@@ -26,6 +26,7 @@ const Button = styled.button`
   font-size: 1.5em;
   background-color: black;
   color: white;
+  border-radius: 5px;
 `;
 
 const Input = styled.input`
@@ -33,6 +34,10 @@ const Input = styled.input`
   border: 1px solid #ddd;
   display:block;
   margin: 10px auto;
+  border-radius: 5px;
+  &::-webkit-input-placeholder {
+    font-size: 14px;
+  }
 `;
 
 class SignupForm extends Component {
@@ -51,7 +56,7 @@ class SignupForm extends Component {
         </Title>
         <Input placeholder="name" type="text" name="name" />
         <Input placeholder="email" type="email" name="email" />
-        <Input placeholder="passowrd" type="password" name="password" />
+        <Input placeholder="password" type="password" name="password" />
         <Button>Sign up</Button>
       </Form>
     );

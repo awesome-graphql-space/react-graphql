@@ -26,6 +26,7 @@ const Button = styled.button`
   font-size: 1.5em;
   background-color: black;
   color: white;
+  border-radius: 5px;
 `;
 
 const Input = styled.input`
@@ -33,6 +34,10 @@ const Input = styled.input`
   border: 1px solid #ddd;
   display:block;
   margin: 10px auto;
+  border-radius: 5px;
+  &::-webkit-input-placeholder {
+    font-size: 14px;
+  }
 `;
 
 class LoginForm extends Component {
