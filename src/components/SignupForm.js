@@ -53,8 +53,9 @@ class SignupForm extends Component {
     return (
       <Form onSubmit={this.signUp}>
         <Title>
-          Sign up to see your tweets
+          Do not have an account??  Sign Up !!
         </Title>
+       
         <Input placeholder="name" type="text" name="name" />
         <Input placeholder="email" type="email" name="email" />
         <Input placeholder="password" type="password" name="password" />
