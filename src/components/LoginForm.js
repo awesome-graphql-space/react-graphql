@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import Header from './Header'
 
 const Form = styled.form`
   margin: 0 auto;
@@ -52,14 +53,17 @@ class LoginForm extends Component {
 
   render() {
     return (
-      <Form onSubmit={this.signUp}>
-        <Title>
-          Already have an account???
-        </Title>
-        <Input placeholder="email" type="email" name="email" />
-        <Input placeholder="passowrd" type="password" name="password" />
-        <Button>Log In</Button>
-      </Form>
+      <div>
+        <Header/>
+        <Form onSubmit={this.signUp}>
+          <Title>
+            Already have an account???
+          </Title>
+          <Input placeholder="email" type="email" name="email" />
+          <Input placeholder="passowrd" type="password" name="password" />
+          <Button>Log In</Button>
+        </Form>
+      </div>
     );
   }
 }
