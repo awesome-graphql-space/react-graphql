@@ -32,6 +32,7 @@ const Input = styled.input`
   font-size: 1.45em;
   border: 1px solid #ddd;
   display:block;
+  margin: 0 auto;
 `;
 
 class LoginForm extends Component {
