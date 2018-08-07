@@ -2,32 +2,43 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import Header from './Header'
 
+const Button = styled.button`
+  display: inline-block;
+  background:#87ceeb;
+  padding: 6px 12px;
+  margin: 12px;
+  font-size: 14px;
+  font-weight: 400;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  border: 1px solid transparent;
+  border-radius: 4px;
+`
 const Section = styled.section`
-  width: 600px;
-  margin: 20px auto;
+  min-height: 20px;
+  padding: 19px;
+  margin-bottom: 20px;
+  background-color: #f5f5f5;
+  border: 1px solid #e3e3e3;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
+  background-color: white;
 `
 const TextArea = styled.textarea`
-  margin-top: 10px;
-  margin-left: 50px;
-  width: 500px;
-  height: 100px;
-  -moz-border-bottom-colors: none;
-  -moz-border-left-colors: none;
-  -moz-border-right-colors: none;
-  -moz-border-top-colors: none;
-  background: none repeat scroll 0 0 rgba(0, 0, 0, 0.07);
-  border-color: -moz-use-text-color #FFFFFF #FFFFFF -moz-use-text-color;
-  border-image: none;
-  border-radius: 6px 6px 6px 6px;
-  border-style: none solid solid none;
-  border-width: medium 1px 1px medium;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12) inset;
-  color: #555555;
-  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-  font-size: 1em;
-  line-height: 1.4em;
-  padding: 5px 8px;
-  transition: background-color 0.2s ease 0s;
+  display: block;
+  width: 100%;
+  height: 34px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 `
 
 class Tweet extends React.Component {
@@ -97,8 +108,8 @@ addPhoto(e) {
           <TextArea onChange={this.handleChange.bind(this)} ></TextArea>
           <br/>
 					<span>Characters Left:  {this.remainingChar()}</span>
-					<button onClick={this.addPhoto.bind(this)} >{this.state.addPhotoStatus ? '✓ Photo Added' : 'Add Photo'}</button>
-          <button disabled={this.remainingChar() === 140 || this.remainingChar() < 0}>Tweet</button>
+					<Button onClick={this.addPhoto.bind(this)} >{this.state.addPhotoStatus ? '✓ Photo Added' : 'Add Photo'}</Button>
+          <Button disabled={this.remainingChar() === 140 || this.remainingChar() < 0}>Tweet</Button>
         </div>
        </Section>
        </div>
