@@ -90,12 +90,12 @@ addPhoto(e) {
 		return (
 			<Section id="twitter">
 				{this.overflowAlert() }
-        <div className="well clearfix">
-          <TextArea onChange={this.handleChange.bind(this)} className="form-control"></TextArea>
+        <div>
+          <TextArea onChange={this.handleChange.bind(this)} ></TextArea>
           <br/>
 					<span>{this.remainingChar()}</span>
-					<button onClick={this.addPhoto.bind(this)} className="btn btn-default pull-right">{this.state.addPhotoStatus ? '✓ Photo Added' : 'Add Photo'}</button>
-          <button className="btn btn-primary pull-right" disabled={this.remainingChar() === 140 || this.remainingChar() < 0}>Tweet</button>
+					<button onClick={this.addPhoto.bind(this)} >{this.state.addPhotoStatus ? '✓ Photo Added' : 'Add Photo'}</button>
+          <button disabled={this.remainingChar() === 140 || this.remainingChar() < 0}>Tweet</button>
         </div>
        </Section>
 		);
