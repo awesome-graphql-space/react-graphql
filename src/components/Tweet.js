@@ -93,7 +93,7 @@ addPhoto(e) {
         <div>
           <TextArea onChange={this.handleChange.bind(this)} ></TextArea>
           <br/>
-					<span>{this.remainingChar()}</span>
+					<span>Characters Left:  {this.remainingChar()}</span>
 					<button onClick={this.addPhoto.bind(this)} >{this.state.addPhotoStatus ? '✓ Photo Added' : 'Add Photo'}</button>
           <button disabled={this.remainingChar() === 140 || this.remainingChar() < 0}>Tweet</button>
         </div>
