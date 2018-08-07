@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import Header from './Header'
 
 const Section = styled.section`
   width: 600px;
@@ -88,6 +89,8 @@ addPhoto(e) {
 
 	render() {
 		return (
+      <div>
+      <Header/>
 			<Section id="twitter">
 				{this.overflowAlert() }
         <div>
@@ -98,6 +101,7 @@ addPhoto(e) {
           <button disabled={this.remainingChar() === 140 || this.remainingChar() < 0}>Tweet</button>
         </div>
        </Section>
+       </div>
 		);
 	}
 }
