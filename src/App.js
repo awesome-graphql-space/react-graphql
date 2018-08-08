@@ -5,7 +5,6 @@ import SignupForm from './components/SignupForm'
 import styled from 'styled-components';
 import Header from './components/Header'
 
-
 class App extends Component {
   render() {
     return (

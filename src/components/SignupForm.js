@@ -32,7 +32,7 @@ const Button = styled.button`
 `;
 
 const Input = styled.input`
-  font-size: 1.45em;
+  font-size: 14px;
   border: 1px solid #ddd;
   display:block;
   margin: 10px auto;
