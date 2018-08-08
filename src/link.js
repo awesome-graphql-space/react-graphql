@@ -5,7 +5,6 @@ import { ApolloLink, Observable, split } from "apollo-link";
 import { WebSocketLink } from "apollo-link-ws";
 import { getMainDefinition } from "apollo-utilities";
 import fetch from "node-fetch";
-import { AuthUtil } from "./utils/auth-util";
 
 export const errorLink = onError(({ graphQLErrors, networkError }) => {
   if (graphQLErrors)
@@ -26,14 +25,14 @@ if (process.browser) {
     options: {
       reconnect: true,
       connectionParams: {
-        Authorization: `Bearer ${AuthUtil.getToken()}`
+        Authorization: `Bearer ${localStorage.getToken()}`
       }
     }
   });
 }
 
 export const httpLink = new HttpLink({
-  uri: "http://unizon.co.uk:4000/graphql",
+  uri: "http://somerandom:4000/graphql",
   fetch,
   credentials: "include"
 });
@@ -41,7 +40,7 @@ export const httpLink = new HttpLink({
 export const cache = new InMemoryCache();
 
 export const request = async operation => {
-  const token = AuthUtil.getToken();
+  const token = localStorage.getToken();
   operation.setContext({
     headers: {
       authorization: token
@@ -52,7 +51,7 @@ export const request = async operation => {
 
 const middlewareLink = new ApolloLink((operation, forward) => {
   // get the authentication token from local storage if it exists
-  const authToken = AuthUtil.getToken();
+  const authToken = localStorage.getToken();
   // return the headers to the context so httpLink can read them
   operation.setContext({
     headers: {
