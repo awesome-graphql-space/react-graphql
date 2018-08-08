@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import React, { Component } from 'react';
 
+
 const HeaderStyle = styled.div`
   background-color: #009CFA;
   height: 50px;
