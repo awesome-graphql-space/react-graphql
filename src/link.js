@@ -25,7 +25,7 @@ if (process.browser) {
     options: {
       reconnect: true,
       connectionParams: {
-        Authorization: `Bearer ${localStorage.getToken()}`
+        Authorization: `Bearer ${localStorage.getItem("token")}`
       }
     }
   });
@@ -40,7 +40,7 @@ export const httpLink = new HttpLink({
 export const cache = new InMemoryCache();
 
 export const request = async operation => {
-  const token = localStorage.getToken();
+  const token = localStorage.getItem("token");
   operation.setContext({
     headers: {
       authorization: token
@@ -51,7 +51,7 @@ export const request = async operation => {
 
 const middlewareLink = new ApolloLink((operation, forward) => {
   // get the authentication token from local storage if it exists
-  const authToken = localStorage.getToken();
+  const authToken = localStorage.getItem("token");
   // return the headers to the context so httpLink can read them
   operation.setContext({
     headers: {
