@@ -38,13 +38,9 @@ const Input = styled.input`
 class LoginForm extends Component {
 
   state = {
-    email: '',
+    username : '',
     password: '',
   } 
-
-  _login =(e) => {
-    console.log('hello')
-  }  
 
   render() {
     return (
@@ -61,11 +57,11 @@ class LoginForm extends Component {
   }
 
   _login = async e => {
-    const { email, password } = this.state
+    const { username, password } = this.state
     this.props
       .loginMutation({
         variables: {
-          email,
+          username,
           password,
         },
       })

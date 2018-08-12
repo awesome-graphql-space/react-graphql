@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-
+import { SIGNUP } from '../graphql/mutation'
+import gql from "graphql-tag";
+import { withRouter } from 'react-router-dom'
+import { graphql } from 'react-apollo'
 
 const Form = styled.form`
   margin: 0 auto;
@@ -45,10 +48,16 @@ const Input = styled.input`
 
 class SignupForm extends Component {
 
-  signUp = (e) => {
-    const email = new FormData(e.target).get('email');
-    e.preventDefault();
-    console.log(`New signup from ${email}`);
+  signUp = async e => {
+    e.preventDefault()
+    const { email, name, password } = this.state
+    const result = await this.props.signupMutation({
+      variables: {
+        name,
+        email,
+        password,
+      },
+    })
   }
 
   render() {
@@ -61,10 +70,12 @@ class SignupForm extends Component {
         <Input placeholder="name" type="text" name="name" />
         <Input placeholder="email" type="email" name="email" />
         <Input placeholder="password" type="password" name="password" />
-        <Button>Sign up</Button>
+        <Button type="submit">Sign up</Button>
       </Form>
     );
   }
 }
 
-export default SignupForm
+export default graphql(SIGNUP, { name: 'signupMutation' })(
+  withRouter(SignupForm),
+)
