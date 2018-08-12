@@ -1,5 +1,4 @@
-import { gql } from "graphql";
-
+import gql from 'graphql-tag';
 
 /**
  * Auth login mutation
