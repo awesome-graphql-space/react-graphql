@@ -1,4 +1,4 @@
-import React from "react"
+import React, { Component } from "react"
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import LoginForm from "./components/LoginForm";
 import Tweet from "./components/Tweet";
