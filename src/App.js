@@ -1,18 +1,27 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React from "react"
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import LoginForm from "./components/LoginForm";
+import Tweet from "./components/Tweet";
+import SignupForm from './components/SignupForm';
+import Header from './components/Header';
 import './App.css';
-import SignupForm from './components/SignupForm'
-import styled from 'styled-components';
-import Header from './components/Header'
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <Header/>
-        <SignupForm />
-      </div>
+      <Router>
+        <div className="App">
+          <Header />
+          <Switch>
+            <Route exact path="/" component={App} />
+            <Route path="/login" component={LoginForm} />
+            <Route path="/signup" component={SignupForm} />
+            <Route path="/tweets" component={Tweet} />
+          </Switch>
+        </div>		
+      </Router>
     );
+    
   }
 }
 
