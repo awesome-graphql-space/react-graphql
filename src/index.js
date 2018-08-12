@@ -4,6 +4,7 @@ import ApolloClient from "apollo-client";
 import { ApolloProvider } from "react-apollo";
 import registerServiceWorker from "./registerServiceWorker";
 import { netLink, errorLink, requestLink } from "./link";
+import App from "./App";
 import "./index.css";
 
 //Imported apollo links
@@ -20,7 +21,7 @@ const client = new ApolloClient({
   // Render react app
 ReactDOM.render(
     <ApolloProvider client={client}>  
-        <AppRouter />
+        <App />
     </ApolloProvider>, document.getElementById('root'));
 
 /**
