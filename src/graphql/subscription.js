@@ -5,8 +5,11 @@ const TWEET_SUBSCRIPTION = gql`
         id
         text
         upload
+        slug
         views
-        author
+        user {
+          author
+        }  
       }
     }
   }
