@@ -5,6 +5,7 @@ import Header from './Header'
 import { graphql } from 'react-apollo'
 import { AUTH_TOKEN } from '../constant'
 import gql from "graphql-tag";
+import { LOGIN_USER_MUTATION } from '../graphql/mutation'
 
 const Title = styled.h2`
   margin-top: 40px;
@@ -83,17 +84,5 @@ class LoginForm extends Component {
   }
 }
 
-const LOGIN_USER_MUTATION = gql`
-  mutation login($email: String!, $password: String!) {
-    login(email: $email, password: $password) {
-      token
-      user {
-        id
-        name
-        email
-      }
-    }
-  }
-`
 export default graphql(LOGIN_USER_MUTATION, { name: 'loginMutation' })(withRouter(LoginForm)
 )
