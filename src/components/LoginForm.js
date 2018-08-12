@@ -62,16 +62,37 @@ class LoginForm extends Component {
     return (
       <div>
         <Header/>
-        <Form>
           <Title>
             Already have an account???
           </Title>
           <Input placeholder="email" type="email" name="email" />
           <Input onChange={e => this.setState({ password: e.target.value })} placeholder="passowrd" type="password" name="password" />
           <Button onClick={this._login}>Log In</Button>
-        </Form>
       </div>
     );
+  }
+
+  _login = async e => {
+    const { email, password } = this.state
+    this.props
+      .loginMutation({
+        variables: {
+          email,
+          password,
+        },
+      })
+      .then(result => {
+        const token = result.data.login.token
+        this.props.refreshTokenFn &&
+          this.props.refreshTokenFn({
+            [AUTH_TOKEN]: token,
+          })
+        this.props.history.replace('/')
+        window.location.reload()
+      })
+      .catch(err => {
+        console.log('error')
+      })
   }
 }
 
@@ -88,4 +109,5 @@ const LOGIN_USER_MUTATION = gql`
   }
 `
 
-export default LoginForm
+export default graphql(LOGIN_USER_MUTATION, { name: 'loginMutation' })(withRouter(LoginForm)
+)
