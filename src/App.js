@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import LoginForm from "./components/LoginForm";
 import Tweet from "./components/Tweet";
 import SignupForm from "./components/SignupForm";
-import Header from "./components/Header";
 import "./App.css";
 
 class App extends Component {
