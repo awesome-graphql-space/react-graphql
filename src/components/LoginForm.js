@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom'
 import styled from 'styled-components';
 import Header from './Header'
+import { graphql } from 'react-apollo'
+import { AUTH_TOKEN } from '../constant'
 
 const Form = styled.form`
   margin: 0 auto;
@@ -45,23 +48,26 @@ const Input = styled.input`
 
 class LoginForm extends Component {
 
-  signUp = (e) => {
-    const email = new FormData(e.target).get('email');
-    e.preventDefault();
-    console.log(`New LoginForm from ${email}`);
-  }
+  state = {
+    email: '',
+    password: '',
+  } 
+
+  _login =(e) => {
+    console.log('hello')
+  }  
 
   render() {
     return (
       <div>
         <Header/>
-        <Form onSubmit={this.signUp}>
+        <Form>
           <Title>
             Already have an account???
           </Title>
           <Input placeholder="email" type="email" name="email" />
-          <Input placeholder="passowrd" type="password" name="password" />
-          <Button>Log In</Button>
+          <Input onChange={e => this.setState({ password: e.target.value })} placeholder="passowrd" type="password" name="password" />
+          <Button onClick={this._login}>Log In</Button>
         </Form>
       </div>
     );
