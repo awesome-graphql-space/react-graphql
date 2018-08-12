@@ -95,6 +95,5 @@ const LOGIN_USER_MUTATION = gql`
     }
   }
 `
-
 export default graphql(LOGIN_USER_MUTATION, { name: 'loginMutation' })(withRouter(LoginForm)
 )
