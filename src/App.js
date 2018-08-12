@@ -1,4 +1,4 @@
-import React from "react"
+import React, { Component } from "react"
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import LoginForm from "./components/LoginForm";
 import Tweet from "./components/Tweet";
@@ -11,9 +11,8 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
-          <Header />
           <Switch>
-            <Route exact path="/" component={App} />
+            <Route exact path="/" component={LoginForm} />
             <Route path="/login" component={LoginForm} />
             <Route path="/signup" component={SignupForm} />
             <Route path="/tweets" component={Tweet} />

@@ -1,19 +1,11 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom'
 import styled from 'styled-components';
 import Header from './Header'
-
-const Form = styled.form`
-  margin: 0 auto;
-  width: 50%;
-  min-width: 400px;
-  max-width: 800px;
-  text-align: center;
-  border: 1px solid #ddd;
-  padding-top: 0px;
-  padding-bottom: 90px;
-  color: black;
-  background: white;
-`;
+import { graphql } from 'react-apollo'
+import { AUTH_TOKEN } from '../constant'
+import gql from "graphql-tag";
+import { LOGIN } from '../graphql/mutation'
 
 const Title = styled.h2`
   margin-top: 40px;
@@ -45,27 +37,52 @@ const Input = styled.input`
 
 class LoginForm extends Component {
 
-  signUp = (e) => {
-    const email = new FormData(e.target).get('email');
-    e.preventDefault();
-    console.log(`New LoginForm from ${email}`);
-  }
+  state = {
+    email: '',
+    password: '',
+  } 
+
+  _login =(e) => {
+    console.log('hello')
+  }  
 
   render() {
     return (
       <div>
         <Header/>
-        <Form onSubmit={this.signUp}>
           <Title>
             Already have an account???
           </Title>
           <Input placeholder="email" type="email" name="email" />
-          <Input placeholder="passowrd" type="password" name="password" />
-          <Button>Log In</Button>
-        </Form>
+          <Input onChange={e => this.setState({ password: e.target.value })} placeholder="passowrd" type="password" name="password" />
+          <Button onClick={this._login}>Log In</Button>
       </div>
     );
   }
+
+  _login = async e => {
+    const { email, password } = this.state
+    this.props
+      .loginMutation({
+        variables: {
+          email,
+          password,
+        },
+      })
+      .then(result => {
+        const token = result.data.login.token
+        this.props.refreshTokenFn &&
+          this.props.refreshTokenFn({
+            [AUTH_TOKEN]: token,
+          })
+        this.props.history.replace('/')
+        window.location.reload()
+      })
+      .catch(err => {
+        console.log('error')
+      })
+  }
 }
 
-export default LoginForm
+export default graphql(LOGIN, { name: 'loginMutation' })(withRouter(LoginForm)
+)
