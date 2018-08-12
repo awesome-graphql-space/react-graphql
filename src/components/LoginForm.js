@@ -6,19 +6,6 @@ import { graphql } from 'react-apollo'
 import { AUTH_TOKEN } from '../constant'
 import gql from "graphql-tag";
 
-const Form = styled.form`
-  margin: 0 auto;
-  width: 50%;
-  min-width: 400px;
-  max-width: 800px;
-  text-align: center;
-  border: 1px solid #ddd;
-  padding-top: 0px;
-  padding-bottom: 90px;
-  color: black;
-  background: white;
-`;
-
 const Title = styled.h2`
   margin-top: 40px;
   margin-bottom: 70px;
@@ -97,7 +84,7 @@ class LoginForm extends Component {
 }
 
 const LOGIN_USER_MUTATION = gql`
-  mutation Login($email: String!, $password: String!) {
+  mutation login($email: String!, $password: String!) {
     login(email: $email, password: $password) {
       token
       user {
