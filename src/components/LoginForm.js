@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import Header from './Header'
 import { graphql } from 'react-apollo'
 import { AUTH_TOKEN } from '../constant'
+import gql from "graphql-tag";
 
 const Form = styled.form`
   margin: 0 auto;
@@ -73,5 +74,18 @@ class LoginForm extends Component {
     );
   }
 }
+
+const LOGIN_USER_MUTATION = gql`
+  mutation Login($email: String!, $password: String!) {
+    login(email: $email, password: $password) {
+      token
+      user {
+        id
+        name
+        email
+      }
+    }
+  }
+`
 
 export default LoginForm
