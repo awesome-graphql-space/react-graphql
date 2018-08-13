@@ -66,10 +66,8 @@ class LoginForm extends Component {
       })
       .then(result => {
         const token = result.data.login.token
-        this.props.refreshTokenFn &&
-          this.props.refreshTokenFn({
-            [AUTH_TOKEN]: token,
-          })
+        //todo set the token 
+
         this.props.history.replace('/')
         window.location.reload()
       })

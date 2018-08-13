@@ -62,10 +62,7 @@ class SignupForm extends Component {
     const token = result.data.signup.token
     localStorage.setItem(AUTH_TOKEN, token)
 
-    this.props.refreshTokenFn &&
-      this.props.refreshTokenFn({
-        [AUTH_TOKEN]: token,
-      })
+    //todo set the token 
 
     this.props.history.replace('/')
     window.location.reload()
