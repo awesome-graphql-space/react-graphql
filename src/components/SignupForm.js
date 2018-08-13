@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import { SIGNUP } from '../graphql/mutation'
-import gql from "graphql-tag";
 import { withRouter } from 'react-router-dom'
 import { graphql } from 'react-apollo'
 import { AUTH_TOKEN } from '../constant'

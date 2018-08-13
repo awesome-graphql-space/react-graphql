@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import Header from './Header'
 import { graphql } from 'react-apollo'
 import { AUTH_TOKEN } from '../constant'
-import gql from "graphql-tag";
 import { LOGIN } from '../graphql/mutation'
 
 const Title = styled.h2`
