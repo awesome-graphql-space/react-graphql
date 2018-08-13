@@ -4,6 +4,7 @@ import { SIGNUP } from '../graphql/mutation'
 import gql from "graphql-tag";
 import { withRouter } from 'react-router-dom'
 import { graphql } from 'react-apollo'
+import { AUTH_TOKEN } from '../constant'
 
 const Form = styled.form`
   margin: 0 auto;
@@ -58,6 +59,17 @@ class SignupForm extends Component {
         password,
       },
     })
+
+    const token = result.data.signup.token
+    localStorage.setItem(AUTH_TOKEN, token)
+
+    this.props.refreshTokenFn &&
+      this.props.refreshTokenFn({
+        [AUTH_TOKEN]: token,
+      })
+
+    this.props.history.replace('/')
+    window.location.reload()
   }
 
   render() {
@@ -67,9 +79,9 @@ class SignupForm extends Component {
           Do not have an account??  Sign Up !!
         </Title>
        
-        <Input placeholder="name" type="text" name="name" />
-        <Input placeholder="email" type="email" name="email" />
-        <Input placeholder="password" type="password" name="password" />
+        <Input onChange={e => this.setState({ name: e.target.value })} placeholder="name" type="text" name="name" />
+        <Input onChange={e => this.setState({ email: e.target.value })} placeholder="email" type="email" name="email" />
+        <Input onChange={e => this.setState({ password: e.target.value })} placeholder="password" type="password" name="password" />
         <Button type="submit">Sign up</Button>
       </Form>
     );
