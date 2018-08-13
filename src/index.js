@@ -56,10 +56,11 @@ const client = new ApolloClient({
   connectToDevTools: true,
 })
 
+const token = localStorage.getItem(AUTH_TOKEN)
   // Render react app
 ReactDOM.render(
     <ApolloProvider client={client}>  
-        <App />
+        <App token={token} />
     </ApolloProvider>, document.getElementById('root'));
 
 /**
