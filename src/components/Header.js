@@ -1,5 +1,13 @@
 import styled from 'styled-components';
 import React from 'react';
+import {
+  NavLink,
+  Link,
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect,
+} from 'react-router-dom'
 
 const HeaderStyle = styled.div`
   background-color: #009CFA;
@@ -7,10 +15,31 @@ const HeaderStyle = styled.div`
   padding: 20px;
   color: white;
   font-size: 24px;
-  text-align:center;
   font-family: 'Open Sans',-apple-system,'BlinkMacSystemFont','Arial',sans-serif;
 `;
 
-const Header = () => <HeaderStyle>Twister</HeaderStyle>
+const Twister = styled.div`
+  text-align: center;
+  margin: 0;
+`
+
+const linkStyle ={
+  color: "white",
+  padding: "15px",
+}  
+
+const Header = () => {
+  return(
+    <div>
+    <HeaderStyle>
+    <a style={linkStyle} href="/login">Login</a>
+    <a style={linkStyle} href="/signup">Signup</a>
+    <Twister>Twister</Twister>
+    </HeaderStyle>
+    </div>
+  )
+}
+
 
 export default Header
+
