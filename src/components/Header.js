@@ -8,6 +8,7 @@ const HeaderStyle = styled.div`
   color: white;
   font-size: 24px;
   text-align:center;
+  font-family: 'Open Sans',-apple-system,'BlinkMacSystemFont','Arial',sans-serif;
 `;
 
 const Header = () => <HeaderStyle>Twister</HeaderStyle>

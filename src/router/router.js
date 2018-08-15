@@ -18,10 +18,10 @@ class AppRouter extends Component {
         <div className="App">
           <Header />
           <Switch>
-            <UnauthRoute exact path="/" canAccess={canAccess} component={LandingPage} />
-            <AuthRoute canAccess={canAccess} path="/home" component={HomePage} />
-            <UnauthRoute canAccess={canAccess} path="/login" component={LoginPage} />
-            <UnauthRoute canAccess={canAccess} path="/signup" component={SignupPage} />
+            <UnauthRoute exact path="/" canAccess={true} component={LandingPage} />
+            <AuthRoute canAccess={true} path="/home" component={HomePage} />
+            <UnauthRoute canAccess={true} path="/login" component={LoginPage} />
+            <UnauthRoute canAccess={true} path="/signup" component={SignupPage} />
           </Switch>
         </div>		
       </Router>

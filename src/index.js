@@ -15,7 +15,7 @@ import "./styles/normalize.css";
 import "./styles/skeleton.css";
 import "./styles/main.css";
 
-const httpLink = new HttpLink({ uri: 'http://localhost:3000/graphql' })
+const httpLink = new HttpLink({ uri: 'http://localhost:2111/graphql' })
 
 const middlewareLink = new ApolloLink((operation, forward) => {
   // get the authentication token from local storage if it exists
@@ -33,7 +33,7 @@ const middlewareLink = new ApolloLink((operation, forward) => {
 const httpLinkAuth = middlewareLink.concat(httpLink)
 
 const wsLink = new WebSocketLink({
-  uri: `ws://localhost:3000/graphql`,
+  uri: `ws://localhost:2111/graphql`,
   options: {
     reconnect: true,
     connectionParams: {
