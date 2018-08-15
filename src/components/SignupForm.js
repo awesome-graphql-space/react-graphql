@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import { SIGNUP } from '../graphql/mutation'
 import { withRouter } from 'react-router-dom'
 import { graphql } from 'react-apollo'
+import { SIGNUP } from '../graphql/mutation'
 import { AUTH_TOKEN } from '../constant'
 
 const Form = styled.form`

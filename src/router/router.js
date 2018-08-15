@@ -1,21 +1,27 @@
 import React, { Component } from "react"
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import LoginForm from "../components/LoginForm";
-import Tweet from "../components/Tweet";
-import SignupForm from "../components/SignupForm";
+import { BrowserRouter as Router, Switch } from "react-router-dom";
+import LandingPage from "../screens/LandingPage";
+import LoginPage from "../screens/LoginPage";
+import SignupPage from "../screens/SignupPage";
+import HomePage from "../screens/HomePage";
+import { AuthRoute, UnauthRoute } from "../common/RouteUtil";
+
 import "../App.css";
+import Header from "../components/Header";
 
 class AppRouter extends Component {
 
   render() {
+    const { canAccess } = this.props;
     return (
       <Router>
         <div className="App">
+          <Header />
           <Switch>
-            <Route exact path="/" component={LoginForm} />
-            <Route path="/login" component={LoginForm} />
-            <Route path="/signup" component={SignupForm} />
-            <Route path="/tweets" component={Tweet} />
+            <UnauthRoute exact path="/" canAccess={canAccess} component={LandingPage} />
+            <AuthRoute canAccess={canAccess} path="/home" component={HomePage} />
+            <UnauthRoute canAccess={canAccess} path="/login" component={LoginPage} />
+            <UnauthRoute canAccess={canAccess} path="/signup" component={SignupPage} />
           </Switch>
         </div>		
       </Router>

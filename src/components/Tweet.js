@@ -1,6 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
-import Header from './Header'
+import Header from './Header';
+import onClickOutside from "react-onclickoutside";
+import { Mutation } from 'react-apollo';
+import { POST } from '../graphql/mutation';
+import { AuthUtil } from '../common/utils';
+import { AUTH_TOKEN } from '../constant';
 
 const Button = styled.button`
   display: inline-block;
@@ -24,12 +29,23 @@ const Section = styled.section`
   border: 1px solid #e3e3e3;
   border-radius: 4px;
   background-color: white;
-`
+`;
+
+export const Flex = styled.div`
+  display: flex;
+	flex: grow;
+	justify-content: space-between;
+`;
+
+export const Row = styled.div`
+  display: flex;
+	justify-content: center;
+	direction: row;
+`;
+
 const TextArea = styled.textarea`
   display: block;
   width: 100%;
-  height: 34px;
-  padding: 6px 12px;
   font-size: 14px;
   line-height: 1.42857143;
   color: #555;
@@ -46,6 +62,7 @@ class Tweet extends React.Component {
 			text: '',
 			remainingChar: 140,
 			addPhotoStatus: false,
+			showButtons: false
 		}
 	}
 
@@ -94,25 +111,70 @@ addPhoto(e) {
       </div>
 			);
 		}
-	}
+  }
+  
+  handleClickOutside(evt) {
+    const { showButtons } = this.state;
+
+    if(showButtons){
+      this.setState({showButtons: false});
+    }
+  }
 
 	render() {
+		const { showButtons, text } = this.state;
+
 		return (
       <div>
-      <Header/>
-			<Section id="twitter">
-				{this.overflowAlert() }
-        <div>
-          <TextArea onChange={this.handleChange.bind(this)} ></TextArea>
-          <br/>
-					<span>Characters Left:  {this.remainingChar()}</span>
-					<Button onClick={this.addPhoto.bind(this)} >{this.state.addPhotoStatus ? '✓ Photo Added' : 'Add Photo'}</Button>
-          <Button disabled={this.remainingChar() === 140 || this.remainingChar() < 0}>Tweet</Button>
-        </div>
-       </Section>
+        <Mutation mutation={POST}>
+        {(mutate, {loading, error}) => (
+          <Section id="twitter">
+            {this.overflowAlert() }
+            <div>
+              <TextArea
+                placeholder="Write something new ..."
+                style={{ height: showButtons ? 100 : 10 }}
+                onChange={this.handleChange.bind(this)}
+                onFocus={() => this.setState({showButtons: true})}
+              />
+              {
+                showButtons ?
+                <React.Fragment>
+                  <br/>
+                  <Flex>
+                  <span>Characters Left:  {this.remainingChar()}</span>
+                  <Row>
+                  <Button
+                    disabled={this.remainingChar() === 140 || this.remainingChar() < 0}
+                    onClick={()=>{
+                      if(text){
+                        mutate({
+                          variables: {
+                            text
+                          }
+                        })
+                        .then(res => {
+                          this.setState({text: '', showButtons: false});
+                        })
+                        .catch(err => console.log(err));
+                      }
+                    }}
+                  >Tweet</Button>
+                  </Row>
+                  </Flex>
+                </React.Fragment>
+                :
+                null
+              }
+            </div>
+          </Section>
+        )}
+       </Mutation>
        </div>
 		);
 	}
 }
 
-export default Tweet
+export default onClickOutside(Tweet);
+
+// <Button onClick={this.addPhoto.bind(this)} >{this.state.addPhotoStatus ? '✓ Photo Added' : 'Add Photo'}</Button>

@@ -11,8 +11,11 @@ import { InMemoryCache } from 'apollo-cache-inmemory'
 import registerServiceWorker from "./registerServiceWorker";
 import App from "./App";
 import "./index.css";
+import "./styles/normalize.css";
+import "./styles/skeleton.css";
+import "./styles/main.css";
 
-const httpLink = new HttpLink({ uri: 'http://localhost:2222/graphql' })
+const httpLink = new HttpLink({ uri: 'http://localhost:3000/graphql' })
 
 const middlewareLink = new ApolloLink((operation, forward) => {
   // get the authentication token from local storage if it exists
@@ -20,7 +23,7 @@ const middlewareLink = new ApolloLink((operation, forward) => {
   // return the headers to the context so httpLink can read them
   operation.setContext({
     headers: {
-      Authorization: tokenValue ? `Bearer ${tokenValue}` : '',
+      Authorization: tokenValue ? `${tokenValue}` : '',
     },
   })
   return forward(operation)
@@ -30,7 +33,7 @@ const middlewareLink = new ApolloLink((operation, forward) => {
 const httpLinkAuth = middlewareLink.concat(httpLink)
 
 const wsLink = new WebSocketLink({
-  uri: `ws://localhost:4000/graphql`,
+  uri: `ws://localhost:3000/graphql`,
   options: {
     reconnect: true,
     connectionParams: {
