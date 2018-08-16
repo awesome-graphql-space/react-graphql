@@ -1,13 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import {
-  NavLink,
-  Link,
-  BrowserRouter as Router,
-  Route,
-  Switch,
-  Redirect,
-} from 'react-router-dom'
+
 
 const Header1 = styled.h1`
 margin: 50px;

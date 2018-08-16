@@ -45,8 +45,8 @@ class LoginForm extends Component {
   render() {
     return (
       <div>
-        {this.hide && <Header />}
-          <Title>ffff
+        {this.state.hide && <Header />}
+          <Title>
             Already have an account???
           </Title>
           <Input placeholder="email" type="email" name="email" />

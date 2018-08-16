@@ -5,6 +5,9 @@ import { Mutation } from 'react-apollo';
 import { POST } from '../graphql/mutation';
 import { AuthUtil } from '../common/utils';
 import { AUTH_TOKEN } from '../constant';
+import {
+  NavLink
+} from 'react-router-dom'
 
 const Button = styled.button`
 	display: inline-block;
@@ -138,7 +141,16 @@ addPhoto(e) {
 		const { showButtons, text } = this.state;
 
 		return (
-      <div>
+			<div>
+			<NavLink
+          className="link dim f6 f5-ns dib mr3 black"
+          activeClassName="gray"
+          exact={true}
+          to="/logout"
+          title="Feed"
+        >
+          Logout
+        </NavLink>
         <Mutation mutation={POST}>
         {(mutate, {loading, error}) => (
           <Section id="twitter">
