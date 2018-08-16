@@ -14,11 +14,11 @@ export const Form = styled.form`
 `;
 
 export const Button = styled.button`
-  font-size: 18px;
+  font-size: 14px;
   background-color: #009cfa;
   color: white;
   border-radius: 5px;
-  padding: 10px;
+  padding: 0 10px;
 `;
 
 export const Input = styled.input`
