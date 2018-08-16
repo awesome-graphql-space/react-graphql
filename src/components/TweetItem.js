@@ -35,7 +35,7 @@ export const TweetItem = ({tweet}) => {
   return(
     <Card>
       <Flex>
-        <h6>Posted by {tweet.author.displayName}</h6>
+        <h5>Posted by {tweet.author.displayName}</h5>
       </Flex>
       <Text>{tweet.text}</Text>
       <Flex>
