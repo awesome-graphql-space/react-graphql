@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import Header from './Header';
 import onClickOutside from "react-onclickoutside";
 import { Mutation } from 'react-apollo';
 import { POST } from '../graphql/mutation';
