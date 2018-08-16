@@ -7,9 +7,21 @@ import { AuthUtil } from '../common/utils';
 import { AUTH_TOKEN } from '../constant';
 
 const Button = styled.button`
-  display: inline-block;
-  background:#87ceeb;
-  padding: 6px 12px;
+	display: inline-block;
+	border: 1px solid #1da1f2;
+	color: #fff;
+	border-radius: 100px;
+	box-shadow: none;
+	cursor: pointer;
+	font-size: 14px;
+	font-weight: bold;
+	line-height: 20px;
+	padding: 6px 16px;
+	position: relative;
+	text-align: center;
+	white-space: nowrap;
+	background-color: #EC4972;
+  border-color: transparent;
   margin: 12px;
   font-size: 14px;
   font-weight: 400;
@@ -18,7 +30,6 @@ const Button = styled.button`
   vertical-align: middle;
   cursor: pointer;
   border: 1px solid transparent;
-  border-radius: 4px;
 `
 const Section = styled.section`
   min-height: 20px;
@@ -27,7 +38,8 @@ const Section = styled.section`
   background-color: #f5f5f5;
   border: 1px solid #e3e3e3;
   border-radius: 4px;
-  background-color: white;
+	background-color: #E81C4F;
+	background: rgba(232,28,79,0.1);
 `;
 
 export const Flex = styled.div`
@@ -51,7 +63,9 @@ const TextArea = styled.textarea`
   background-color: #fff;
   background-image: none;
   border: 1px solid #ccc;
-  border-radius: 4px;
+	border-radius: 4px;
+	border-color: #F5A4B8;
+	box-shadow: 0 0 0 1px #F5A4B8;
 `
 
 class Tweet extends React.Component {
