@@ -11,7 +11,14 @@ export const Card = styled.section`
   background-color: #f5f5f5;
   border: 1px solid #e3e3e3;
   border-radius: 4px;
-  background-color: white;
+  border-bottom: 1px solid #e6ecf0;
+  cursor: pointer;
+  min-height: 51px;
+  padding: 9px 12px;
+  background-color: #fff;
+  &:hover {
+    background-color: #f5f8fa;
+  }
 `;
 
 export const Text = styled.p`

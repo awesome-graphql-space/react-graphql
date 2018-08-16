@@ -15,6 +15,7 @@ const HeaderStyle = styled.div`
   padding: 20px;
   color: white;
   font-size: 24px;
+  
   font-family: 'Open Sans',-apple-system,'BlinkMacSystemFont','Arial',sans-serif;
 `;
 
