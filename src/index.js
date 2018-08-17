@@ -63,7 +63,8 @@ const client = new ApolloClient({
     defaults,
     resolvers,
     typeDefs
-  }
+  },
+  onError: (e) => { console.log(e.graphQLErrors) }
 })
 
 const token = localStorage.getItem(AUTH_TOKEN)
