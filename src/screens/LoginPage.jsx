@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Mutation } from "react-apollo";
 import { NavLink } from "react-router-dom";
-import { LOGIN, LOGIN_USER, STORE_TOKEN } from "../graphql/mutation";
+import { LOGIN, LOGIN_USER } from "../graphql/mutation";
 import { AuthUtil } from "../common/utils";
 import { Title, Form, Button, Input } from "./style";
 import { AUTH_TOKEN } from "../constant";
@@ -32,20 +32,18 @@ class LoginPage extends Component {
                     }
                   })
                     .then(res => {
-                      console.log('hhhhhh')
                       AuthUtil.setToken(res.data.login.token);
                       client.mutate({
-                        mutation: STORE_TOKEN,
+                        mutation: LOGIN_USER,
                         variables: {
-                          loggedIn: true
+                          isLoggedIn: true,
+                          token: res.data.login.token
                         }
                       }).then(results => {
-                        console.log("results"+ results)
+                        console.log(results)
                       }).catch(err => {
                         console.log(err)
                       })
-
-                      console.log('jjjj')
                         
                       this.props.history.push("/home");
                     })

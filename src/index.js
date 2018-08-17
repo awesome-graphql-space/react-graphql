@@ -7,7 +7,8 @@ import { WebSocketLink } from 'apollo-link-ws'
 import { ApolloLink, split } from 'apollo-link'
 import { getMainDefinition } from 'apollo-utilities'
 import { HttpLink } from 'apollo-link-http'
-import { InMemoryCache } from 'apollo-cache-inmemory'
+import { InMemoryCache } from 'apollo-cache-inmemory';
+import { withClientState } from "apollo-link-state";
 import registerServiceWorker from "./registerServiceWorker";
 import { resolvers, defaults } from './graphql/resolver';
 import { typeDefs } from './graphql/typeDefs';
@@ -17,7 +18,7 @@ import "./styles/normalize.css";
 import "./styles/skeleton.css";
 import "./styles/main.css";
 
-const httpLink = new HttpLink({ uri: 'http://localhost:2111/graphql' })
+const httpLink = new HttpLink({ uri: 'http://localhost:3000/graphql' })
 
 const middlewareLink = new ApolloLink((operation, forward) => {
   // get the authentication token from local storage if it exists
@@ -35,7 +36,7 @@ const middlewareLink = new ApolloLink((operation, forward) => {
 const httpLinkAuth = middlewareLink.concat(httpLink)
 
 const wsLink = new WebSocketLink({
-  uri: `ws://localhost:2111/graphql`,
+  uri: `ws://localhost:3000/graphql`,
   options: {
     reconnect: true,
     connectionParams: {
@@ -54,16 +55,25 @@ const link = split(
   httpLinkAuth,
 )
 
+// Initialize apollo cache using inmemorycache
+const cache = new InMemoryCache();
+
+/**
+ * @description Setting up apollo local state. It takse the default state, local resolvers
+ * and typeDefs
+ */
+const stateLink = withClientState({
+  cache,
+  defaults,
+  resolvers,
+  typeDefs
+});
+
 // apollo client setup
 const client = new ApolloClient({
-  link: ApolloLink.from([link]),
-  cache: new InMemoryCache(),
+  link: ApolloLink.from([stateLink, link]),
+  cache,
   connectToDevTools: true,
-  clientState: {
-    defaults,
-    resolvers,
-    typeDefs
-  },
   onError: (e) => { console.log(e.graphQLErrors) }
 })
 

@@ -44,10 +44,15 @@ const Header = () => {
         console.log(error)
         return <div>error</div>;
       }
+
+      console.log(data.getAuthStatus.loggedIn);
       return(
         <HeaderStyle>
-        {data.getAuthStatus.isLoggedIn ? <a style={linkStyle} href="/logout">Logout</a> : <a style={linkStyle} href="/login">Login</a> }
+        {data.getAuthStatus.loggedIn ? <a style={linkStyle} href="/logout">Logout</a> : 
+        <React.Fragment>
+        <a style={linkStyle} href="/login">Login</a>
         <a style={linkStyle} href="/signup">Signup</a>
+        </React.Fragment> }
         <Twister>Twister</Twister>
         </HeaderStyle>
       )

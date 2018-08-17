@@ -2,19 +2,7 @@ import gql from 'graphql-tag';
 
 export const resolvers = {
   Mutation: {
-    storeToken: (_, {loggedIn}, { cache, getCacheKey }) => {
-      const query = gql`
-        {
-          loggedIn @client 
-        } 
-      `;
-      const auths = cache.readQuery({ query });
-      console.log("Auths"+ auths)
-      const data = { ...auths, loggedIn: loggedIn};
-      cache.writeQuery({ query, data });
-      return data;
-    },
-    loginUser: (_, { isLoggedIn, token }, { cache }) => {
+    loginUser: async (_, { isLoggedIn, token }, { cache }) => {
       const query = gql`
         query {
           getAuthStatus( id: "1") @client{
@@ -25,20 +13,29 @@ export const resolvers = {
         }
       `;
       const previous = cache.readQuery({ query });
+
+      console.log(previous);
+
       const data = {
         ...previous,
-        token: token,
-        isLoggedIn: isLoggedIn
+        token,
+        loggedIn: isLoggedIn
       };
-      cache.writeData({ data });
-      const current = cache.readQuery({ query });
-      return current;
+
+      cache.writeData({id:`AuthPayload:${'1'}`, data });
+      const current = await cache.readQuery({ query });
+      console.log(current);
+      return current.getAuthStatus;
     },
   }
 };
 
 export const defaults =  {
-  getAuthStatus :{},
-  loggedIn: false
+  getAuthStatus :{
+    __typename: 'AuthPayload',
+    id: '1',
+    loggedIn: false,
+    token: ''
+  },
 } 
 

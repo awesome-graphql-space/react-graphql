@@ -31,3 +31,11 @@ export const GET_AUTH_STATUS = gql`
       }
     }
 `;
+
+
+/** Local state query */
+export const GET_LOGIN_STATUS = gql`
+    query {
+      getLoginStatus @client
+    }
+`;
