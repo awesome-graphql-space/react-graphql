@@ -16,8 +16,8 @@ export const resolvers = {
     },
     loginUser: (_, { isLoggedIn, token }, { cache }) => {
       const query = gql`
-        query getAuthStatus {
-          getAuthStatus( id: "1") @client{
+        query getAuthStatus($id: "1") {
+          getAuthStatus( id: $id) @client{
             token
             id
             loggedIn
