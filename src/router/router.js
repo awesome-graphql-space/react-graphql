@@ -83,7 +83,7 @@ class AppRouter extends Component {
     return (
       <Router>
         <div className="App">
-        {!this.state.token && <Header />}
+        <Header />
           <Switch>
             <UnauthRoute token={this.state.token} exact path="/" canAccess={true} component={LandingPage} />
             <AuthRoute token={this.state.token} canAccess={true} path="/home" component={HomePage} />

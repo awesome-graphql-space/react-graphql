@@ -12,6 +12,16 @@ export const LOGIN = gql`
     }
 `;
 
+export const LOGIN_USER = gql`
+    mutation loginUser($isLoggedIn: Boolean!, $token: String!){
+        loginUser(isLoggedIn: $isLoggedIn, token: $token) @client{
+            id
+            loggedIn
+            token
+        }
+    }
+`;
+
 export const SIGNUP = gql`
     mutation signup($username: String!, $password: String!, $displayName: String!){
         signup(username: $username, password: $password, displayName: $displayName ){

@@ -9,6 +9,8 @@ import { getMainDefinition } from 'apollo-utilities'
 import { HttpLink } from 'apollo-link-http'
 import { InMemoryCache } from 'apollo-cache-inmemory'
 import registerServiceWorker from "./registerServiceWorker";
+import { resolvers, defaults } from './graphql/resolver';
+import { typeDefs } from './graphql/typeDefs';
 import App from "./App";
 import "./index.css";
 import "./styles/normalize.css";
@@ -57,6 +59,11 @@ const client = new ApolloClient({
   link: ApolloLink.from([link]),
   cache: new InMemoryCache(),
   connectToDevTools: true,
+  clientState: {
+    defaults,
+    resolvers,
+    typeDefs
+  }
 })
 
 const token = localStorage.getItem(AUTH_TOKEN)

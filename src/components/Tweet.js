@@ -142,15 +142,6 @@ addPhoto(e) {
 
 		return (
 			<div>
-			<NavLink
-          className="link dim f6 f5-ns dib mr3 black"
-          activeClassName="gray"
-          exact={true}
-          to="/logout"
-          title="Feed"
-        >
-          Logout
-        </NavLink>
         <Mutation mutation={POST}>
         {(mutate, {loading, error}) => (
           <Section id="twitter">

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Mutation } from "react-apollo";
 import { NavLink } from "react-router-dom";
-import { LOGIN } from "../graphql/mutation";
+import { LOGIN, LOGIN_USER } from "../graphql/mutation";
 import { AuthUtil } from "../common/utils";
 import { Title, Form, Button, Input } from "./style";
 import { AUTH_TOKEN } from "../constant";
@@ -18,7 +18,7 @@ class LoginPage extends Component {
     return (
       <div>
         <Mutation mutation={LOGIN}>
-          {(mutate, { loading, error }) => (
+          {(mutate, { loading, error, client }) => (
             <div>
               <Title>Already have an account???</Title>
               <Form
@@ -33,8 +33,15 @@ class LoginPage extends Component {
                   })
                     .then(res => {
                       AuthUtil.setToken(res.data.login.token);
-                      console.log(res.data.login.token)
-                      console.log(AuthUtil.getToken())
+                      client.mutate({
+                        mutation: LOGIN_USER,
+                        variables: {
+                          loggedIn: true,
+                          token:res.data.login.token,
+                          id: "1"
+                        }
+                      })
+                        
                       this.props.history.push("/home");
                     })
                     .catch(err => {
