@@ -23,8 +23,8 @@ export const TWEETS = gql`
 
 /** Local state query */
 export const GET_AUTH_STATUS = gql`
-    query getAuthStatus {
-      getAuthStatus(id: "1") @client{
+    query getAuthStatus($id: String!) {
+      getAuthStatus(id: $id) @client{
         id
         token
         loggedIn

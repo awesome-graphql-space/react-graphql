@@ -13,10 +13,13 @@ const typeDefs = `
   }
 
   type Mutation {
-    loginUser(isLoggedIn: Boolean!, token: String!): Boolean
+    loginUser(isLoggedIn: Boolean!, token: String!): AuthPayload
+    storeToken(isLoggedIn: Boolean!): Boolean
   }
 
   type Query {
-    getAuthStatus(id: String!): Boolean
+    getAuthStatus(id: String!): AuthPayload
+    loggedIn: Boolean
   }
+
 `;

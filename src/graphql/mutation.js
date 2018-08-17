@@ -22,6 +22,12 @@ export const LOGIN_USER = gql`
     }
 `;
 
+export const STORE_TOKEN = gql`
+    mutation storeToken($loggedIn: Boolean!){
+        storeToken(loggedIn: $loggedIn) @client
+    }
+`;
+
 export const SIGNUP = gql`
     mutation signup($username: String!, $password: String!, $displayName: String!){
         signup(username: $username, password: $password, displayName: $displayName ){
