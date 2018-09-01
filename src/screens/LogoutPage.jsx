@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 
-const headwrapper = styled.h1`
-  margin-top: 20px;
-`
-
 class LogoutPage extends Component {
 
     componentDidMount(){
@@ -14,7 +10,7 @@ class LogoutPage extends Component {
     render() {
       return (
         <div>
-          <headwrapper>You have been Logged out of the page</headwrapper>
+          <h2>You have been Logged out of the page</h2>
         </div>
       );
     }

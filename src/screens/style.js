@@ -6,7 +6,6 @@ export const Title = styled.h2`
   margin-bottom: 70px;
   font-size: 1.5em;
   color: black;
-  background-color: white;
 `;
 
 export const Form = styled.form`
