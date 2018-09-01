@@ -6,11 +6,11 @@ import { Flex, Row } from './Tweet';
 export const Card = styled.section`
   min-height: 20px;
   padding: 19px;
+  border-radius:10px;
   margin-bottom: 20px;
   margin: 20px;
   background-color: #f5f5f5;
   border: 1px solid #e3e3e3;
-  border-radius: 4px;
   border-bottom: 1px solid #e6ecf0;
   cursor: pointer;
   min-height: 51px;

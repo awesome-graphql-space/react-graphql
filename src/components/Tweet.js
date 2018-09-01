@@ -54,7 +54,8 @@ export const Flex = styled.div`
 export const Row = styled.div`
   display: flex;
 	justify-content: center;
-	direction: row;
+  direction: row;
+  padding:20px;
 `;
 
 const TextArea = styled.textarea`
