@@ -7,10 +7,7 @@ import { Route, Redirect } from "react-router";
  * @type {Object}
  */
 export class AuthRoute extends Component {
-  constructor(props) {
-    super(props);
-  }
-
+  
   static propTypes = {
     component: PropTypes.func,
     path: PropTypes.string,
