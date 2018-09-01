@@ -17,18 +17,18 @@ const HeaderStyle = styled.div`
   padding: 20px;
   color: white;
   font-size: 24px;
-  
   font-family: 'Open Sans',-apple-system,'BlinkMacSystemFont','Arial',sans-serif;
 `;
 
 const Twister = styled.div`
-  text-align: center;
-  margin: 0;
+ float:left;
+ font-size:30px;
 `
 
 const linkStyle ={
   color: "white",
   padding: "15px",
+  float: "right"
 }  
 
 const Header = () => {
@@ -52,8 +52,8 @@ const Header = () => {
         <React.Fragment>
         <a style={linkStyle} href="/login">Login</a>
         <a style={linkStyle} href="/signup">Signup</a>
-        </React.Fragment> }
         <Twister>Twister</Twister>
+        </React.Fragment> }
         </HeaderStyle>
       )
     }}
