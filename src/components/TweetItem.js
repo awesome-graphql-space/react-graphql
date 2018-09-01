@@ -40,11 +40,11 @@ export const TweetItem = ({tweet}) => {
       <Text>{tweet.text}</Text>
       <Flex>
         <Row>
-          <button style={{margin:"5px"}}>Like</button>
-          <button style={{margin:"5px"}}>Reply</button>
-          <button style={{margin:"5px"}}>comment</button>
+          <button style={{margin:"5px",background:"#009CF9",color:"white"}}>Like</button>
+          <button style={{margin:"5px",background:"#009CF9",color:"white"}}>Reply</button>
+          <button style={{margin:"5px",background:"#009CF9",color:"white"}}>comment</button>
         </Row>
-        <button style={{margin:"5px"}}>Retwist</button>
+        <button style={{margin:"5px",background:"#DE585E",color:"white"}}>Retwist</button>
       </Flex>
     </Card>
   );
