@@ -15,7 +15,7 @@
     "graphql-tag": "^2.9.2",
     "jwt-decode": "^2.2.0",
     "react": "^16.4.2",
-    "react-apollo": "^2.1.9",
+    "react-apollo": "^3.0.0",
     "react-dom": "^16.4.2",
     "react-infinite-scroller": "^1.2.0",
     "react-onclickoutside": "^6.7.1",
